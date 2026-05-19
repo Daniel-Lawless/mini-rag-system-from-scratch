@@ -4,7 +4,7 @@ This project currently uses my own mathematical derivations as the retrieval cor
 
 The original human-readable versions are maintained in my separate statistics repository:
 
-[Statistics for AI](../Statistics-for-ai-)
+[Statistics for AI](https://github.com/Daniel-Lawless/Statistics-for-ai-)
 
 For the RAG system, I keep simplified machine-readable versions of selected derivations in the `data/` folder so they can be chunked and embedded more cleanly.
 
