@@ -5,7 +5,7 @@ find its x-coordinate. Let $(\alpha, \beta)$ be the lighthouse's $x$ and $y$ coo
 are the points at which the flashes hit the shoreline.
 
 <p align="center">
-  <img src="../assets/lighthouse-problem-images/lighthouse-problem-setup.png" alt="Lighthouse problem setup" width="600">
+  <img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/lighthouse-problem-images/lighthouse-problem-setup.png" alt="Lighthouse problem setup" width="600">
 </p>
 
 ## Bayes rule method
@@ -264,7 +264,7 @@ Differentiate with respect to $\alpha$:
 Let the $x$-coordinate that best describes the observed flashes be $\hat{\alpha}$. This value would be one such that
 
 <p align="center">
-  <img src="../assets/lighthouse-problem-images/lighthouse-problem-final-equation.png" alt="Lighthouse problem setup" width="250">
+  <img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/lighthouse-problem-images/lighthouse-problem-final-equation.png" alt="Lighthouse problem final equation" width="250">
 </p>
 
 Unlike the Gaussian case, where we obtain a neat closed-form expression for the maximum likelihood estimator, this is not the case for the Cauchy likelihood. Therefore, $\hat{\alpha}$ must generally be found numerically. The resulting $\hat{\alpha}$ is the value of the lighthouse's $x$-location that makes the observed flash locations most plausible, and thus is our estimate of the lighthouse's horizontal position.
