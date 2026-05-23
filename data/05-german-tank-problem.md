@@ -240,7 +240,7 @@ These $n$ observed values split the full range of true serial numbers into $n+1$
 Suppose $N=10$ and we observe 1, 2, 4, 9. Then the gaps are:
 
 <p align="center">
-  <img src="../assets/german-tank-problem-images/german-tank-gap-example.png" alt="German Tank gap example" width="250">
+  <img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/german-tank-problem-images/german-tank-gap-example.png" alt="German Tank gap example" width="250">
 </p>
 
 So there are $n+1 = 4+1 = 5$ gaps $G_0, G_1, G_2, G_3, G_4$.
@@ -248,7 +248,7 @@ So there are $n+1 = 4+1 = 5$ gaps $G_0, G_1, G_2, G_3, G_4$.
 In general, the $n+1$ gap idea counts the possible slots where unobserved numbers can sit:
 
 <p align="center">
-  <img src="../assets/german-tank-problem-images/german-tank-gaps.png" alt="German Tank gaps" width="350">
+  <img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/german-tank-problem-images/german-tank-gaps.png" alt="German Tank gaps diagram" width="350">
 </p>
 
 The final gap $G_n$ is the number of unobserved serial numbers above the maximum. In the example, $M=9$, and there are $10-9=1$ numbers above it. So:
@@ -449,7 +449,7 @@ Factor out $n$:
 
 | Proving the German Tank estimator is unbiased | Proving the MLE estimator is biased |
 |---|---|
-| $\large \displaystyle \text{bias}(\hat{N}) = \mathbb{E}[\hat{N}] - N$ | <img src="../assets/german-tank-problem-images/german-tank-MLE-estimator-bias.png" alt="German Tank MLE estimator bias" width="250"> |
+| $\large \displaystyle \text{bias}(\hat{N}) = \mathbb{E}[\hat{N}] - N$ |<img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/german-tank-problem-images/german-tank-MLE-estimator-bias.png" alt="German Tank MLE estimator bias" width="250"> |
 | $\large \displaystyle = \mathbb{E}\left[M + \frac{M}{n} - 1\right] - N$ | $\large \displaystyle = \mathbb{E}[M] - N$ |
 | $\large \displaystyle = \mathbb{E}[M] + \frac{\mathbb{E}[M]}{n} - 1 - N$ | $\large \displaystyle = \frac{n(N+1)}{n+1} - N$ |
 | $\large \displaystyle = \frac{n(N+1)}{n+1} + \frac{1}{n}\frac{n(N+1)}{n+1} - 1 - N$ | $\large \displaystyle = \frac{nN+n-Nn-N}{n+1}$ |
