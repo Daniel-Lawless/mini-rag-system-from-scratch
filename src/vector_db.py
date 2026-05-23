@@ -5,25 +5,34 @@ class VectorDB:
 
     def __init__(self):
         # Store each chunk's normalised embedding and original text.
-        self.chunk_vectors = []
-        self.chunks = []
+        self.records = []
 
-    def add_chunk(self, chunk: str, vector: np.ndarray) -> None:
+    # Adds a record to the vector database
+    def add_record(self, chunk: str, embedding: np.ndarray, source_file: str, chunk_index: int) -> None:
 
-        self.chunk_vectors.append(vector)
-        self.chunks.append(chunk)
+        record = {
+            "chunk" : chunk,
+            "embedding" : embedding,
+            "metadata" : {
+                "source_file" : source_file,
+                "chunk_index" : chunk_index
+            }
+        }
 
-    def search(self, query: np.ndarray, k: int) -> list[tuple[float, str]]:
+        self.records.append(record)
+
+    # Returns the top k most similar records in our vector database to the user query.
+    def search(self, query: np.ndarray, k: int) -> list[tuple[float, dict]]:
         # Min-heap storing the current top-k most similar chunks.
         heap = []
 
-        # Compare the query against every stored chunk vector.
-        for i, (chunk, vector) in enumerate(zip(self.chunks, self.chunk_vectors)):
+        # Compare the query against every stored embedding.
+        for index, record in enumerate(self.records):
             # Since both vectors are normalised, dot product = cosine similarity.
-            similarity = query @ vector
+            similarity = query @ record["embedding"]
 
             # Include i as a tie-breaker if two similarities are equal.
-            item = (similarity, i, chunk)
+            item = (similarity, index, record)
 
             # Fill the heap until it contains k chunks.
             if len(heap) < k:
@@ -35,4 +44,4 @@ class VectorDB:
                 heapq.heapreplace(heap, item)
 
         # Return chunks from most similar to least similar.
-        return [(similarity, chunk) for similarity, i, chunk in sorted(heap, reverse=True)]
+        return [(similarity, record) for similarity, index, record in sorted(heap, reverse=True)]
