@@ -1,6 +1,6 @@
 class Chunking:
 
-    def chunk_text(self, text: str, chunk_size: int = 20, overlap:int = 5) -> list[str]:
+    def chunk_text(self, text: str, chunk_size: int = 20, overlap: int = 5) -> list[str]:
 
         # Overlap cannot be greater than or equal than chunk_size
         if overlap >= chunk_size:

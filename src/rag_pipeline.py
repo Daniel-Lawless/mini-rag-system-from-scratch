@@ -3,6 +3,7 @@ from chunking import Chunking
 from embeddings import Embeddings
 from openai import OpenAI
 from pathlib import Path
+import logging
 
 class RAGPipeline():
 
@@ -13,14 +14,21 @@ class RAGPipeline():
         self.embedder = embedder
     
     # Populates the vector database.
-    def index_text(self, text: str) -> None:
-        chunks = self.chunker.chunk_text(text, chunk_size= 50, overlap=30)
+    def index_text(self, text: str, source_file: str) -> None:
 
-        # Store each chunk and its embedding.
-        for chunk in chunks:
+        # Split data into chunks
+        chunks = self.chunker.chunk_text(text, chunk_size= 300, overlap=75)
+
+        # Assign each chunk a chunk_id
+        for chunk_index, chunk in enumerate(chunks):
             chunk_embedding = self.embedder.embed(chunk)
-            self.vector_db.add_chunk(chunk, chunk_embedding)
-    
+            self.vector_db.add_record(chunk = chunk,
+                                      embedding = chunk_embedding,
+                                      source_file = source_file,
+                                      chunk_index = chunk_index
+                                      )
+
+    # Models response
     def response(self, query: str, num_retrieve: int) -> str:
 
         # Embed the query
@@ -29,8 +37,21 @@ class RAGPipeline():
         # Retrieve num_retrieve most similar chunks. 
         most_similar = self.vector_db.search(query_embedding, num_retrieve)
 
+        retrieved_texts = []
+
         # Just return the chunk text, not the similarity
-        retrieved_texts = [chunk for _, chunk in most_similar]
+        for _, record in most_similar:
+            source_file = record["metadata"]["source_file"]
+            chunk_index = record["metadata"]["chunk_index"]
+            chunk = record["chunk"]
+
+            # To help with debugging:
+            print()
+
+            retrieved_texts.append(
+                f"[Source file: {source_file}, chunk index: {chunk_index}]\n"
+                f"{chunk}"
+            )
 
         # Combined most similar chunks acts as model context.
         context = "\n\n --- \n\n".join(retrieved_texts)
@@ -72,18 +93,19 @@ if __name__ == "__main__":
     # pass them to our RAG pipeline
     rag_pipeline = RAGPipeline(vector_db, chunker, embedder)
 
-    # Specify the path to the text we want to index in the vector DB.
-
+    # Specify the path to the directory that contains the data we want to store in our vector DB.
     data_dir = Path("../data")
 
+    # For each file in this directory, read its contents and index it. This populates our database.
     for file in sorted(data_dir.glob("*.md")):
         print(f"Indexing {file.name}...")
         text = file.read_text(encoding = "utf-8")
-        rag_pipeline.index_text(text)
+        rag_pipeline.index_text(text, source_file = file.name)
 
-    # return the models response.
+    # Once the DB is populated, return the models response.
     answer = rag_pipeline.response("What is the final probability for Buffons needle?", 10)
     print(answer)
+
 
 
 
