@@ -133,7 +133,7 @@ J(\mu, \sigma)
 | $\large \displaystyle 0 = \sum_{i=1}^{n}x_i - \sum_{i=1}^{n}\mu$ | $\large \displaystyle \frac{n}{\sigma} = \sum_{i=1}^{n}\frac{(x_i-\mu)^2}{\sigma^3}$ |
 | $\large \displaystyle 0 = \sum_{i=1}^{n}x_i - n\mu$ | $\large \displaystyle n\sigma^2 = \sum_{i=1}^{n}(x_i-\mu)^2$ |
 | $\large \displaystyle n\mu = \sum_{i=1}^{n}x_i$ | $\large \displaystyle \hat{\sigma}^{2} = \frac{1}{n} \sum\limits_{i=1}^{n}(x_i - \hat{\mu}_{MLE})^2$ |
-| <img src="../assets/mean-and-variance-MLE-images/mean-and-variance-mean-solution.png" width="200"> | <img src="../assets/mean-and-variance-MLE-images/mean-and-variance-variance-solution.png" width="200"> |
+| <img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/mean-and-variance-MLE-images/mean-and-variance-mean-solution.png" alt="Mean MLE solution" width="200"> | <img src="https://raw.githubusercontent.com/Daniel-Lawless/Statistics-for-ai/main/assets/mean-and-variance-MLE-images/mean-and-variance-variance-solution.png" alt="Variance MLE solution" width="200"> |
   
 </div>
 
