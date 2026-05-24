@@ -22,5 +22,5 @@ So, the images are still available for human readers, while the surrounding text
 - [x] Add SentenceTransformer embeddings
 - [x] Connect retrieved chunks to OpenAI generation
 - [x] Add metadata storage for chunks
-- [ ] Improve chunking with paragraph/sentence-aware splitting
+- [x] Improve chunking with paragraph/sentence-aware splitting
 - [ ] Vectorize search using NumPy matrix multiplication
