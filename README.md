@@ -23,4 +23,4 @@ So, the images are still available for human readers, while the surrounding text
 - [x] Connect retrieved chunks to OpenAI generation
 - [x] Add metadata storage for chunks
 - [x] Improve chunking with paragraph/sentence-aware splitting
-- [ ] Vectorize search using NumPy matrix multiplication
+- [x] Vectorize search using NumPy matrix multiplication
