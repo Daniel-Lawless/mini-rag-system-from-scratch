@@ -64,7 +64,7 @@ What is the final probability for Buffon's Needle?
 
 The system will embed this query and will retrieve the k most relevant chunks from the notes, including their source file and chunk index, then passes that retrieved context into the LLM to generate an answer. We can see from the output that the chunks with the highest similarity to my query are from `04_Buffons_Needle.md`, which is what we expect, since this file contains information about the Buffon's Needle problem. This example shows the RAG pipeline retrieving information from the Buffon's Needle derivation and using it to answer the question from the provided context:
 
-![Example RAG output for Buffon's Needle](assets/buffons-needle-example-output.png)
+![Example RAG output for Buffon's Needle](assets/RAG_System_Buffon's_Needle_Prompt.png)
 
 Example Question 2:
 
