@@ -116,12 +116,14 @@ cd Mini-rag-system-from-scratch
 
 ### 2. Create and activate a virtual environment
 
-```bash
 Linux:
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
 Windows PowerShell:
+```bash
 python -m venv venv
 venv\Scripts\Activate.ps1
 ```
@@ -132,11 +134,13 @@ pip install -r requirements.txt
 ```
 
 ### 4. Set your OpenAI API key
-```bash
 On Linux/macOS:
+```bash
 export OPENAI_API_KEY="your_api_key_here"
+```
 
 On Windows PowerShell:
+```bash
 $env:OPENAI_API_KEY="your_api_key_here"
 ```
 
